@@ -1,6 +1,7 @@
 package pageobjecj;
 
 import java.time.Duration;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.openqa.selenium.By;
@@ -40,7 +41,7 @@ public class HomePage  {
 		List<WebElement> listelement=driver.findElements(listElement);
 		arrow_btnElement.click();
 	    WebElement test=retryingFindClick(listElement, driver);
-        test.click();
+       test.click();
 		
 		return null;
         
@@ -67,18 +68,37 @@ public class HomePage  {
 		public static WebElement retryingFindClick(By by,WebDriver driver) {
 	        boolean result = false;
 	        int attempts = 0;
+	       
 	        while(attempts < 2) {
 	            try {
 	                List<WebElement> listelement=driver.findElements(by);
 	                WebDriverWait w =new WebDriverWait(driver, Duration.ofSeconds(30));
-	                
+                    ArrayList<String> list_text=new ArrayList<String>();
+                    int size=listelement.size();
+                    list_text=listtext(listelement);
+                    
 	                for (WebElement webElement : listelement) {
 	                	w.until(ExpectedConditions.elementToBeClickable(webElement));
-	                	if (webElement.getText().equals("SY BTech - CSE / TRIMESTER-V / 2020-21 / Middle")) {
+//	                	
+	                	if (webElement.getText().equals(list_text.get(size-1))) {
 	                		return webElement;
 						}
-						
-					}
+	                }
+	                
+	              
+	               
+	                
+//	                for (WebElement webElement : listelement) {
+//	                	w.until(ExpectedConditions.elementToBeClickable(webElement));
+//	                	list_text.add(webElement.getText());
+//	                	
+//	                	
+//	                	
+//	                	if (webElement.getText().equals(list_text.get(0))) {
+//	                	System.out.println( webElement.getText());	
+//						}
+//						
+//					}
 	                result = true;
 	                break;
 	            } catch(StaleElementReferenceException e) {
@@ -145,5 +165,14 @@ public class HomePage  {
 			image_buttonElement.click();
 			
 		}
+	}
+	public static ArrayList<String> listtext( List<WebElement> listelement) {
+		 ArrayList<String> list_text=new ArrayList<String>();
+		 for (int i = 0; i < listelement.size(); i++) {
+			list_text.add(listelement.get(i).getText());
+		}
+		 
+		return list_text;
+		
 	}
 }
