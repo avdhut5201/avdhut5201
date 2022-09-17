@@ -23,7 +23,7 @@ public class erp {
 
 	
 	public static void main(String[] args) throws InterruptedException {	
-		System.setProperty("webdriver.chrome.driver", "C:\\Tools\\Selenium\\Chromedriver96\\chromedriver_win32 (1)\\chromedriver.exe");
+		System.setProperty("webdriver.chrome.driver", "Tools\\chromedriver.exe");
 		WebDriver dChromedriver=new ChromeDriver();
 		 WebDriverWait w=new WebDriverWait(dChromedriver, Duration.ofSeconds(30));
 	dChromedriver.get("https://erp.mitwpu.edu.in/");
