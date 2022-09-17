@@ -12,5 +12,7 @@ As of now it downloads the result of your latest exam you appeared.If you want t
 How to use it:
 Just download selenium and chrome webdriver and place it in folder mentioned or you can give path of your own webdriver in main class i.e erp.java
 Also change the credentials from LoginPage.java file to access your account
+To execute bot access erp.java 
+All class names are specific webpages ad those pages can be accessed from pageobjecj package from src folder
 
 -->
